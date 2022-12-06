@@ -46,12 +46,15 @@ class MainActivity : AppCompatActivity() {
 
     inner class SongAdapter: RecyclerView.Adapter<SongAdapter.ViewHolder>() {
         inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-            val txTitle: TextView = itemView.findViewById(android.R.id.text1)
-            val txSinger: TextView = itemView.findViewById(android.R.id.text2)
+//            val txTitle: TextView = itemView.findViewById(android.R.id.text1)
+//            val txSinger: TextView = itemView.findViewById(android.R.id.text2)
+            val txTitle: TextView = itemView.findViewById(R.id.text1)
+            val txSinger: TextView = itemView.findViewById(R.id.text2)
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val view = layoutInflater.inflate(android.R.layout.simple_list_item_2,
+            //val view = layoutInflater.inflate(android.R.layout.simple_list_item_2,
+            val view = layoutInflater.inflate(R.layout.item_song,
                 parent,
                 false)
             return ViewHolder(view)

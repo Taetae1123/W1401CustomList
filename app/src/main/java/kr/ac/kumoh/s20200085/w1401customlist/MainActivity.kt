@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.toolbox.NetworkImageView
 import kr.ac.kumoh.s20200085.w1401customlist.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -50,6 +51,11 @@ class MainActivity : AppCompatActivity() {
 //            val txSinger: TextView = itemView.findViewById(android.R.id.text2)
             val txTitle: TextView = itemView.findViewById(R.id.text1)
             val txSinger: TextView = itemView.findViewById(R.id.text2)
+            val niImage: NetworkImageView = itemView.findViewById(R.id.image)
+
+            init {
+                niImage.setDefaultImageResId(android.R.drawable.ic_menu_report_image)
+            }
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -63,8 +69,11 @@ class MainActivity : AppCompatActivity() {
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             holder.txTitle.text = model.list.value?.get(position)?.title
             holder.txSinger.text = model.list.value?.get(position)?.singer
+            holder.niImage.setImageUrl(model.getImageUrl(position), model.imageLoader)
         }
 
         override fun getItemCount() = model.list.value?.size ?: 0
     }
 }
+
+//시험:어뎁터에 함수 3개 중에 onbindingviewholder을 바꾸면 이미지를 setting할 수 있음
